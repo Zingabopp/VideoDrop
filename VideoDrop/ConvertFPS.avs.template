@@ -1,0 +1,8 @@
+﻿LoadPlugin("H:\MeGUI-64\tools\lsmash\LSMASHSource.dll")
+
+LWLibavVideoSource("--VideoFile--") 
+
+super = MSuper(pel=2)
+backward_vec = MAnalyse(super, isb = true)
+forward_vec = MAnalyse(super, isb = false)
+MFlowFps(super, backward_vec, forward_vec, num=180, den=3, ml=100) 
