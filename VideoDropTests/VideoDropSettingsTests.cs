@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using static Util;
 using static INIReader;
 
-namespace VideoDropTests
+namespace VideoDrop.Tests
 {
     [TestClass()]
     public class VideoDropSettingsTests
@@ -18,10 +18,10 @@ namespace VideoDropTests
         {
             string line = "--colormatrix bt709 --range pc --input - range pc --seek 2500 --frames 300";
             // Test no tags, default bounds
-            var tagList = VideoDropSettings.GetTags(line); 
+            var tagList = VideoDropSettings.GetTags(line);
             Assert.IsTrue(tagList.Count == 0);
             // Test no tags, non-default bounds
-            tagList = VideoDropSettings.GetTags(line, new string[] { "%", "%" }); 
+            tagList = VideoDropSettings.GetTags(line, new string[] { "%", "%" });
             Assert.IsTrue(tagList.Count == 0);
         }
 

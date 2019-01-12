@@ -365,7 +365,7 @@ namespace VideoDrop
             return setVal;
         }
 
-        private static string ReplaceArgs(string setVal, string identifier, string replacement)
+        public static string ReplaceArgs(string setVal, string identifier, string replacement)
         {
             var startIndex = setVal.ToLower().IndexOf(identifier.ToLower());
             if (startIndex >= 0)

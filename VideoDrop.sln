@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoDrop", "VideoDrop\VideoDrop.csproj", "{628B8E7B-3D4D-424E-8BE7-AE09C82F8C88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoDropTests", "VideoDropTests\VideoDropTests.csproj", "{D1290B73-A170-47D4-A584-818B65A486C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoDropTests", "VideoDropTests\VideoDropTests.csproj", "{21A33A3C-F6BE-4F63-8A8B-7EA5B6F073A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{628B8E7B-3D4D-424E-8BE7-AE09C82F8C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{628B8E7B-3D4D-424E-8BE7-AE09C82F8C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{628B8E7B-3D4D-424E-8BE7-AE09C82F8C88}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1290B73-A170-47D4-A584-818B65A486C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1290B73-A170-47D4-A584-818B65A486C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1290B73-A170-47D4-A584-818B65A486C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1290B73-A170-47D4-A584-818B65A486C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21A33A3C-F6BE-4F63-8A8B-7EA5B6F073A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21A33A3C-F6BE-4F63-8A8B-7EA5B6F073A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21A33A3C-F6BE-4F63-8A8B-7EA5B6F073A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21A33A3C-F6BE-4F63-8A8B-7EA5B6F073A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
