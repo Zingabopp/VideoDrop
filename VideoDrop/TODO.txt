@@ -1,0 +1,14 @@
+﻿ffmpeg.exe -i "input.mkv" -f yuv4mpegpipe - | x265.exe - --y4m -o "output.265"
+avs4x26x.exe --x26x-binary "H:\MeGUI-64\tools\x265\x64\x265.exe" --preset slow --crf 28 test.avs -o output.h265
+
+TODO: 
+Add more error handling for invalid paths
+Finish custom encoders (redo existing encoders?)
+Add file name prefix/suffix to settings
+Add encoder=none option to convert between container types? (mkv <-> mp4)
+Timestamped log file
+Fix crash when ArchiveVideo fails to move file (add (#) to file name if it already exists)
+   -Check if file is already in archive folder
+Be able to set a setting to "ask" in the ini to prompt for input
+   -Profile selection
+Make the encoding processes more uniform (everything uses cmd.exe)

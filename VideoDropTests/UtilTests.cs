@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using static Util;
 //using static INIReader;
 
-namespace Tests
+namespace UtilTests
 {
     [TestClass()]
-    public class UtilTests
+    public class FileSystemOpsTests
     {
         [TestMethod()]
         public void DirectoryToString_DirectoryInfoTest()
@@ -18,10 +18,10 @@ namespace Tests
             string result = "";
             System.IO.DirectoryInfo dInfo = new System.IO.DirectoryInfo(@"C:\Windows");
             result = DirectoryToString(dInfo);
-            Assert.AreEqual(result, @"C:\Windows\");
+            Assert.AreEqual(@"C:\Windows\", result);
             dInfo = new System.IO.DirectoryInfo(@"C:\Windows\");
             result = DirectoryToString(dInfo);
-            Assert.AreEqual(result, @"C:\Windows\");
+            Assert.AreEqual(@"C:\Windows\", result);
         }
 
         [TestMethod()]
@@ -30,10 +30,84 @@ namespace Tests
             string result = "";
             string dInfo = @"C:\Windows";
             result = DirectoryToString(dInfo);
-            Assert.AreEqual(result, @"C:\Windows\");
+            Assert.AreEqual(@"C:\Windows\", result);
             dInfo = @"C:\Windows\";
             result = DirectoryToString(dInfo);
-            Assert.AreEqual(result, @"C:\Windows\");
+            Assert.AreEqual(@"C:\Windows\", result);
+        }
+
+        [TestMethod()]
+        public void QuotePathTest()
+        {
+            string path = "";
+            string result = "";
+
+            path = @"C:\Windows\test.txt";
+            result = QuotePath(path);
+            Assert.AreEqual("\"C:\\Windows\\test.txt\"", result);
+
+            path = @"\test.txt";
+            result = QuotePath(path);
+            Assert.AreEqual("\"\\test.txt\"", result);
+
+            path = "\"C:\\Windows\\test.txt\"";
+            result = QuotePath(path);
+            Assert.AreEqual("\"C:\\Windows\\test.txt\"", result);
+        }
+
+        [TestMethod()]
+        public void JoinPathsTest()
+        {
+            string path1, path2, expectedResult, result = "";
+
+            path1 = @"C:\Windows";
+            path2 = @"test\test.txt";
+            expectedResult = path1 + "\\" + path2;
+            result = JoinPaths(path1, path2);
+            Assert.AreEqual(expectedResult, result);
+
+            path1 = @"C:\Windows\";
+            path2 = @"test\test.txt";
+            result = JoinPaths(path1, path2);
+            Assert.AreEqual(expectedResult, result);
+
+            path1 = @"C:\Windows\";
+            path2 = @"\test\test.txt";
+            result = JoinPaths(path1, path2);
+            Assert.AreEqual(expectedResult, result);
+
+            path1 = @"C:\Windows";
+            path2 = @"test\test.txt";
+            result = JoinPaths(path1, path2);
+            Assert.AreEqual(expectedResult, result);
+
+            path1 = @"C:\Windows";
+            path2 = "";
+            expectedResult = path1;
+            result = JoinPaths(path1, path2);
+            Assert.AreEqual(expectedResult, result);
+
+            path2 = @"C:\Windows";
+            path1 = "";
+            expectedResult = path2;
+            result = JoinPaths(path1, path2);
+            Assert.AreEqual(expectedResult, result);
+
+            path1 = "";
+            path2 = "";
+            expectedResult = "";
+            result = JoinPaths(path1, path2);
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod()]
+        public void DirectoryExistsTest()
+        {
+            Assert.IsTrue(DirectoryExists(new System.IO.DirectoryInfo(@"C:\Windows")));
+            Assert.IsFalse(DirectoryExists(new System.IO.DirectoryInfo(@"C:\Windows123456")));
+            string nullStr = null;
+            Assert.IsFalse(DirectoryExists(nullStr));
+
         }
     }
 }

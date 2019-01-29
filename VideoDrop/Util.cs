@@ -39,11 +39,21 @@ public static class Util
         }
     }
 
+    /// <summary>
+    /// Takes a directory path and ensures it ends with '\'.
+    /// </summary>
+    /// <param name="dInfo"></param>
+    /// <returns></returns>
     public static string DirectoryToString(System.IO.DirectoryInfo dInfo)
     {
         return DirectoryToString(dInfo.FullName);
     }
 
+    /// <summary>
+    /// Takes a directory path and ensures it ends with '\'.
+    /// </summary>
+    /// <param name="dInfo"></param>
+    /// <returns></returns>
     public static string DirectoryToString(string dInfo)
     {
         string retStr = dInfo;
@@ -52,18 +62,60 @@ public static class Util
         return retStr;
     }
 
+    /// <summary>
+    /// Checks if the provided DirectoryInfo path exists.
+    /// </summary>
+    /// <param name="dInfo">Directory to check</param>
+    /// <returns>True if the directory exists, false if it doesn't or the DirectoryInfo is null</returns>
     public static bool DirectoryExists(System.IO.DirectoryInfo dInfo)
     {
-        if (dInfo != null && dInfo.Exists)
-            return true;
+        if (dInfo != null)
+        {
+            dInfo.Refresh();
+            return dInfo.Exists;
+        }
         else
             return false;
     }
 
+    /// <summary>
+    /// Checks if the directory at the provided path exists.
+    /// </summary>
+    /// <param name="dInfo">Directory path to check.</param>
+    /// <returns>True if the directory exists, false if it doesn't or the string is null</returns>
+    public static bool DirectoryExists(string dInfo)
+    {
+        if (dInfo != null)
+            return DirectoryExists(new System.IO.DirectoryInfo(dInfo));
+        else
+            return false;
+    }
+
+    /// <summary>
+    /// Checks if the file defined by the provided FileInfo exists.
+    /// </summary>
+    /// <param name="fInfo"></param>
+    /// <returns>True if the file exists, false if it doesn't or the FileInfo is null</returns>
     public static bool FileExists(System.IO.FileInfo fInfo)
     {
-        if (fInfo != null && fInfo.Exists)
-            return true;
+        if (fInfo != null)
+        {
+            fInfo.Refresh();
+            return fInfo.Exists;
+        }
+        else
+            return false;
+    }
+
+    /// <summary>
+    /// Checks if the file at the provided path exists.
+    /// </summary>
+    /// <param name="fInfo"></param>
+    /// <returns>True if the file exists, false if it doesn't or the string is null</returns>
+    public static bool FileExists(string fInfo)
+    {
+        if (fInfo != null)
+            return FileExists(new System.IO.FileInfo(fInfo));
         else
             return false;
     }
@@ -90,6 +142,11 @@ public static class Util
         return folderCreated;
     }
 
+    /// <summary>
+    /// Takes a path string and surrounds it with quotes if it isn't already.
+    /// </summary>
+    /// <param name="path">Path to quote</param>
+    /// <returns>A path with quotes around it</returns>
     public static string QuotePath(string path)
     {
         path = path.StartsWith("\"") ? path : "\"" + path;
@@ -97,10 +154,15 @@ public static class Util
         return path;
     }
 
+    /// <summary>
+    /// Writes a message to the console if the message's DEBUGLEVEL is >= the set debug level.
+    /// </summary>
+    /// <param name="src">Source of the message</param>
+    /// <param name="msg">Message to write</param>
+    /// <param name="level">Debug level of the message</param>
+    /// <returns>The string that would be outputted to the console</returns>
     public static string WriteInfo(string src, string msg, DEBUGLEVEL level)
     {
-        if (!(VideoDropDebugLevel >= level))
-            return "";
         string toWrite = "";
         switch (level)
         {
@@ -124,7 +186,8 @@ public static class Util
         }
         toWrite = toWrite + src + ": ";
         toWrite = toWrite + msg;
-        Console.WriteLine(toWrite);
+        if (VideoDropDebugLevel >= level)
+            Console.WriteLine(toWrite);
         return toWrite;
     }
 
@@ -133,7 +196,7 @@ public static class Util
     /// </summary>
     /// <param name="first"></param>
     /// <param name="second"></param>
-    /// <returns></returns>
+    /// <returns>A string path from the combined parts</returns>
     public static string JoinPaths(string first, string second)
     {
         if (first == "" | second == "")
@@ -157,6 +220,11 @@ public static class Util
         return newPath;
     }
 
+    /// <summary>
+    /// Gets the name of the method that called this function.
+    /// </summary>
+    /// <param name="memberName"></param>
+    /// <returns>Name of the calling method</returns>
     public static string GetMethodName([System.Runtime.CompilerServices.CallerMemberName] string memberName = null)
     {
         return memberName;

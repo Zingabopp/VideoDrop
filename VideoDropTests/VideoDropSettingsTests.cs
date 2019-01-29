@@ -8,10 +8,24 @@ using System.Threading.Tasks;
 using static Util;
 using static INIReader;
 
-namespace VideoDrop.Tests
+namespace VideoDropSettingsTests
 {
     [TestClass()]
-    public class VideoDropSettingsTests
+    public class ReplaceArgsTests
+    {
+        [TestMethod()]
+        public void ReplaceArgs_DefaultArgTest()
+        {
+            string setVal, currentDir = "";
+            setVal = @"%EXEPATH%\folder\file.txt";
+            currentDir = DirectoryToString(System.IO.Directory.GetCurrentDirectory());
+            
+
+        }
+    }
+
+    [TestClass()]
+    public class GetTagsTests
     {
         [TestMethod()]
         public void GetTags_NoTagsTest()

@@ -46,7 +46,7 @@ namespace VideoDrop
         public VideoDropSettings(ref Dictionary<string, string> globalSettings)
         {
             foreach (string i in globalSettings.Keys)
-                ModifyDictionary(i, ReplaceArgs(globalSettings[i]), ref _globalSettings);
+                ModifyDictionary(i, ReplacePathArgs(globalSettings[i]), ref _globalSettings);
             var keys = _globalSettings.Keys.ToList();
             foreach (var k in keys)
             {
@@ -354,18 +354,24 @@ namespace VideoDrop
         /// </summary>
         /// <param name="setVal"></param>
         /// <returns></returns>
-        ///     
-        public static string ReplaceArgs(string setVal)
+        public static string ReplacePathArgs(string setVal)
         {
             // exe path
             // TODO: Currently only works if the ".\" is at the start of the setting value. Any reason to change so it works if it comes later (maybe if it's used as part of a custom parameter)?
             if (setVal.StartsWith(@".\"))
-                setVal = ReplaceArgs(setVal, @".\", DirectoryToString(Directory.GetCurrentDirectory()));
-            setVal = ReplaceArgs(setVal, "%EXEPATH%", DirectoryToString(Directory.GetCurrentDirectory()));
+                setVal = ReplacePathArgs(setVal, @".\", DirectoryToString(Directory.GetCurrentDirectory()));
+            setVal = ReplacePathArgs(setVal, "%EXEPATH%", DirectoryToString(Directory.GetCurrentDirectory()));
             return setVal;
         }
 
-        public static string ReplaceArgs(string setVal, string identifier, string replacement)
+        /// <summary>
+        /// Replace path arguments in the provided string.
+        /// </summary>
+        /// <param name="setVal">String to check for arguments</param>
+        /// <param name="identifier">Argument identifier</param>
+        /// <param name="replacement">String to replace the argument with</param>
+        /// <returns></returns>
+        public static string ReplacePathArgs(string setVal, string identifier, string replacement)
         {
             var startIndex = setVal.ToLower().IndexOf(identifier.ToLower());
             if (startIndex >= 0)
