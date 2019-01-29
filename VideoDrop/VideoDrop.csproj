@@ -58,6 +58,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="AVSTemplates\ConvertFPS.avs.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AVSTemplates\CropResize.avs.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AVSTemplates\Reencode.avs.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AVSTemplates\Resize1440p.avs.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="VideoDrop.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

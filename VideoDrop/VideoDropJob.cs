@@ -537,6 +537,10 @@ namespace VideoDrop
 
         public bool ArchiveSource()
         {
+            if (!ParseBool(Settings.GetSetting("ArchiveSource")))
+            {
+                return true;
+            }
             var successful = false;
             if (!(ArchiveFolder == ""))
             {
@@ -547,6 +551,14 @@ namespace VideoDrop
                 if (destFolder.Exists)
                 {
                     FileInfo newFile = new FileInfo(DirectoryToString(ArchiveFolder) + sVid.Name);
+                    int increment = 2;
+                    while (newFile.Exists)
+                    {
+                        string fileName = DirectoryToString(ArchiveFolder) + sVid.Name;
+                        fileName = fileName.Substring(0, fileName.LastIndexOf(".")) + $" ({increment})" + fileName.Substring(fileName.LastIndexOf("."));
+                        newFile = new FileInfo(fileName);
+                        increment++;
+                    }
                     if (sVid.FullName == newFile.FullName)
                     {
                         WriteInfo(this.GetType().Name + "." + GetMethodName(), "Source video is already in the archive folder.", DEBUGLEVEL.INFO);

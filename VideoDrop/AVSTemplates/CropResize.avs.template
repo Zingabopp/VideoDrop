@@ -1,3 +1,4 @@
 LoadPlugin("H:\MeGUI-64\tools\lsmash\LSMASHSource.dll")
-LWLibavVideoSource("--VideoFile--")
+#LWLibavVideoSource("--VideoFile--")
+FFMS2("--VideoFile--",-1,-2)
 BilinearResize(1920,1080,44,36,-20,0)

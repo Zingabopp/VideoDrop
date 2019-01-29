@@ -22,8 +22,8 @@ namespace VideoDrop
             WriteInfo(GetMethodName(), "Video files to convert:", DEBUGLEVEL.INFO);
             if (fileList.Count == 0)
             {
-                fileList = new List<string>() { "test.mkv", "hevc_test.mp4" };
-                noArchive = true;
+                fileList = new List<string>() { "test.mp4" };//, "hevc_test.mp4" };
+                //noArchive = true;
             }
             string startTag = "StartTag";
             string middleTag = "MiddleTag";

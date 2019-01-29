@@ -1,6 +1,7 @@
 ﻿LoadPlugin("H:\MeGUI-64\tools\lsmash\LSMASHSource.dll")
 
-LWLibavVideoSource("--VideoFile--") 
+#LWLibavVideoSource("--VideoFile--")
+FFMS2("--VideoFile--",-1,-2)
 
 super = MSuper(pel=2)
 backward_vec = MAnalyse(super, isb = true)

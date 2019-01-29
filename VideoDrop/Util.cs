@@ -136,7 +136,7 @@ public static class Util
                 dInfo.Create();
                 dInfo.Refresh();
                 folderCreated = dInfo.Exists;
-                Console.WriteLine(folderCreated ? "INFO: Util: Creating folder: " : "INFO: Util: Failed to create folder: "  + dInfo.FullName);
+                Console.WriteLine(folderCreated ? "INFO: Util: Creating folder: " : "INFO: Util: Failed to create folder: " + dInfo.FullName);
             }
         }
         return folderCreated;
@@ -228,5 +228,32 @@ public static class Util
     public static string GetMethodName([System.Runtime.CompilerServices.CallerMemberName] string memberName = null)
     {
         return memberName;
+    }
+
+    /// <summary>
+    /// Determines the boolean equivalent of the passed string.
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    public static bool ParseBool(string str)
+    {
+        if (str == null)
+            return false;
+        switch (str.Trim().ToLower())
+        {
+            case "true":
+                return true;
+            case "1":
+                return true;
+            case "yes":
+                return true;
+            case "false":
+                return false;
+            case "0":
+                return false;
+            case "no":
+                return false;
+        }
+        return false;
     }
 }

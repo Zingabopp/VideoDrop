@@ -110,4 +110,33 @@ namespace UtilTests
 
         }
     }
+
+    [TestClass()]
+    public class ParsingTests
+    {
+        [TestMethod()]
+        public void ParseBool_Test()
+        {
+            string test;
+
+            test = "true";
+            Assert.IsTrue(ParseBool(test));
+            test = "1 ";
+            Assert.IsTrue(ParseBool(test));
+            test = "Yes";
+            Assert.IsTrue(ParseBool(test));
+
+            test = "false";
+            Assert.IsFalse(ParseBool(test));
+            test = " 0 ";
+            Assert.IsFalse(ParseBool(test));
+            test = "nO";
+            Assert.IsFalse(ParseBool(test));
+
+            test = "random";
+            Assert.IsFalse(ParseBool(test));
+            test = null;
+            Assert.IsFalse(ParseBool(test));
+        }
+    }
 }

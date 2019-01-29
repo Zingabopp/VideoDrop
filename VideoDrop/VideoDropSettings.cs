@@ -354,12 +354,12 @@ namespace VideoDrop
         /// </summary>
         /// <param name="setVal"></param>
         /// <returns></returns>
-        public static string ReplacePathArgs(string setVal)
+        public string ReplacePathArgs(string setVal)
         {
             // exe path
             // TODO: Currently only works if the ".\" is at the start of the setting value. Any reason to change so it works if it comes later (maybe if it's used as part of a custom parameter)?
             if (setVal.StartsWith(@".\"))
-                setVal = ReplacePathArgs(setVal, @".\", DirectoryToString(Directory.GetCurrentDirectory()));
+                setVal = ReplacePathArgs(setVal, @".\", DirectoryToString(GetSetting("workingFolder")));
             setVal = ReplacePathArgs(setVal, "%EXEPATH%", DirectoryToString(Directory.GetCurrentDirectory()));
             return setVal;
         }

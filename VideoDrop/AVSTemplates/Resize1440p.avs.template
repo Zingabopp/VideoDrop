@@ -1,0 +1,3 @@
+LoadPlugin("H:\MeGUI-64\tools\lsmash\LSMASHSource.dll")
+#LWLibavVideoSource("--VideoFile--")
+Lanczos4Resize(FFMS2("--VideoFile--",-1,-2),2560,1440)
