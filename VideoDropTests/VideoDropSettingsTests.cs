@@ -25,6 +25,16 @@ namespace VideoDropSettingsTests
     }
 
     [TestClass()]
+    public class ReplacePathArgsTests
+    {
+        [TestMethod()]
+        public void ReplaceArgs_DefaultArgTest()
+        {
+            Assert.Inconclusive();
+        }
+    }
+
+    [TestClass()]
     public class GetTagsTests
     {
         [TestMethod()]

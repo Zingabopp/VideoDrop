@@ -46,7 +46,7 @@ namespace VideoDrop
             int numFinished = 0;
             int numFailed = 0;
             // Setup_Encoder()
-            VideoDropJob vjob = null/* TODO Change to default(_) if this is not a reference type */;
+            VideoDropJob vjob = null; /* TODO: Change to default(_) if this is not a reference type */
             foreach (var arg in fileList)
             {
                 bool successful = true;

@@ -12,3 +12,10 @@ Fix crash when ArchiveVideo fails to move file (add (#) to file name if it alrea
 Be able to set a setting to "ask" in the ini to prompt for input
    -Profile selection
 Make the encoding processes more uniform (everything uses cmd.exe)
+Store raw settings and only perform tag/path replacements when retrieving them
+   -Have option in GetSetting to retrieve raw value
+Get source video information (such as #frames) for all files before encoding
+   -Use to calculate total time remaining
+      -Average the FPS of each profile
+Create folders when it needs to
+Be able to have video intro/outro in settings

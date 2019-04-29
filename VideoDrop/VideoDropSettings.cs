@@ -43,6 +43,10 @@ namespace VideoDrop
             }
         }
 
+        /// <summary>
+        /// Creates a new VideoDropSettings from a Dictionary.
+        /// </summary>
+        /// <param name="globalSettings"></param>
         public VideoDropSettings(ref Dictionary<string, string> globalSettings)
         {
             foreach (string i in globalSettings.Keys)
@@ -59,6 +63,10 @@ namespace VideoDrop
             populateProfiles();
         }
 
+        /// <summary>
+        /// Copy constructor.
+        /// </summary>
+        /// <param name="vdSettings"></param>
         public VideoDropSettings(ref VideoDropSettings vdSettings)
         {
             foreach (string i in vdSettings._globalSettings.Keys)
@@ -358,8 +366,8 @@ namespace VideoDrop
         {
             // exe path
             // TODO: Currently only works if the ".\" is at the start of the setting value. Any reason to change so it works if it comes later (maybe if it's used as part of a custom parameter)?
-            if (setVal.StartsWith(@".\"))
-                setVal = ReplacePathArgs(setVal, @".\", DirectoryToString(GetSetting("workingFolder")));
+            if (setVal.StartsWith(@"\"))
+                setVal = DirectoryToString(GetSetting("workingFolder")) + setVal.Substring(1);
             setVal = ReplacePathArgs(setVal, "%EXEPATH%", DirectoryToString(Directory.GetCurrentDirectory()));
             return setVal;
         }
